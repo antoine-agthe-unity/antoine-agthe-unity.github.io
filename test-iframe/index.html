@@ -16,7 +16,9 @@
       var messageId = 0;
       
       function sendMessage() {
+        console.log(`Try to send message ${messageId} to parent ${parent}`);
         var message = `Hello from child #${messageId++}`;
+        
         parent.postMessage(message, "https://antoine-agthe.github.io");
       }
             
