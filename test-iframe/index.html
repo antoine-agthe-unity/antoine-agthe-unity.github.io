@@ -17,9 +17,12 @@
       
       function sendMessage() {
         console.log(`Try to send message ${messageId} to parent ${parent != null}`);
+
         var message = `Hello from child #${messageId++}`;
-        
         parent.postMessage(message, "https://antoine-agthe.github.io");
+
+        message = `Hello from child using * #${messageId++}`;
+        parent.postMessage(message, "*");
       }
             
       window.addEventListener("message", receiveMessage, false);
