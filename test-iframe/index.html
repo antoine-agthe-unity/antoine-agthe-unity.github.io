@@ -9,9 +9,15 @@
       }
       
       function receiveMessage(e) {
-        console.log(e);
-        var message = `ORIGIN: ${e.origin}, SOURCE: ${e.source}, data: ${e.data}`;
-        log(message);
+        console.log({origin: location.origin, message: e});
+        
+        try {
+          var message = `ORIGIN: ${e.origin}, SOURCE: ${e.source}, DATA: ${e.data}`;
+          log(message);
+        }
+        catch (error) {
+          log(error);
+        }
       }
       
       var messageId = 0;
@@ -37,7 +43,7 @@
         console.log(window.parent.location);
       }
       catch (e) {
-        console.error(e);
+        console.error({origin: location.origin, error: e});
       }
     </script>
   </body>
