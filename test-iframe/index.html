@@ -11,12 +11,16 @@
       function receiveMessage(message) {
         console.log({origin: location.origin, message: message});        
         log(message.data);
+        
+        if(message.source == parent) {
+          console.log("Message source is parent");
+        }
       }
       
       var messageId = 0;
       
       function sendMessage() {
-        console.log(`Try to send message ${messageId} to parent ${parent != null}`);
+        console.log(`Try to send message ${messageId} to parent`);
 
         var message = `Hello from child #${messageId++}`;
         parent.postMessage(message, "https://antoine-agthe.github.io");
@@ -37,6 +41,10 @@
       }
       catch (error) {
         console.error({origin: location.origin, error: error});
+      }
+      
+      function debugParent() {
+        console.log(parent);
       }
     </script>
   </body>
