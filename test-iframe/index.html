@@ -9,7 +9,8 @@
       }
       
       function receiveMessage(e) {
-        var message = `FROM: ${e.origin}: ${e.data}`;
+        console.log(e);
+        var message = `ORIGIN: ${e.origin}, SOURCE: ${e.source}, data: ${e.data}`;
         log(message);
       }
       
@@ -28,6 +29,16 @@
       window.addEventListener("message", receiveMessage, false);
       
       setInterval(sendMessage, 1000);
+      
+      try {
+        log(`My location is ${window.location}`);
+        log(`My parent location is ${window.parent.location}`);
+        console.log(window.location);
+        console.log(window.parent.location);
+      }
+      catch (e) {
+        console.error(e);
+      }
     </script>
   </body>
 </html>
