@@ -8,16 +8,9 @@
         div.innerHTML = `<p>${message}</p>${div.innerHTML}`;
       }
       
-      function receiveMessage(e) {
-        console.log({origin: location.origin, message: e});
-        
-        try {
-          var message = `ORIGIN: ${e.origin}, SOURCE: ${e.source}, DATA: ${e.data}`;
-          log(message);
-        }
-        catch (error) {
-          log(error);
-        }
+      function receiveMessage(message) {
+        console.log({origin: location.origin, message: message});        
+        log(message.data);
       }
       
       var messageId = 0;
@@ -42,8 +35,8 @@
         console.log(window.location);
         console.log(window.parent.location);
       }
-      catch (e) {
-        console.error({origin: location.origin, error: e});
+      catch (error) {
+        console.error({origin: location.origin, error: error});
       }
     </script>
   </body>
